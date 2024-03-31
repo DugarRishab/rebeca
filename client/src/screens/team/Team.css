@@ -1,0 +1,50 @@
+* {
+  background-color: black;
+}
+
+.heading1 {
+  text-align: center;
+  color: azure;
+  font-family: "Sedgwick Ave Display", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.intro1 {
+  padding: 20px;
+  color: grey;
+}
+.cars {
+  text-align: center;
+}
+select {
+  padding: 10px;
+  border-radius: 5px;
+  color: azure;
+  font-family: "Sedgwick Ave Display", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.teamimage {
+  height: 150px;
+  width: 150px;
+  background-image: url("/assets/imgs/team/circle.png");
+  background-size: contain;
+}
+.Person1 {
+  text-align: center;
+}
+.intro2 {
+  color: grey;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.row2 {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 767px) {
+  .row2 {
+    display: block;
+  }
+}

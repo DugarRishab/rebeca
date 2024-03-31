@@ -5,6 +5,7 @@ import Schedule from "./screens/Schedule/Schedule";
 import Sponsorship from "./screens/Sponsors/Sponsorship";
 
 import Daydetails from "./screens/Daydetails/Daydetails";
+import Team from "./screens/team/Team";
 
 const AllRoutes = ({
   login,
@@ -58,8 +59,7 @@ const AllRoutes = ({
             user={user}
           ></Schedule>
         }
-      >
-      </Route>
+      ></Route>
       <Route exact path="/events/:DayID" element={<Daydetails />} />
       <Route
         exact
@@ -76,6 +76,23 @@ const AllRoutes = ({
             logout={logout}
             user={user}
           ></Sponsorship>
+        }
+      ></Route>
+      <Route
+        exact
+        path="/team"
+        element={
+          <Team
+            onAuthClose={onAuthClose}
+            onAuthOpen={onAuthOpen}
+            onEmailverifyOpen={onEmailverifyOpen}
+            onEmailverifyClose={onEmailverifyClose}
+            authOpen={authOpen}
+            emailVerificationOpen={emailVerificationOpen}
+            login={login}
+            logout={logout}
+            user={user}
+          ></Team>
         }
       ></Route>
     </Routes>

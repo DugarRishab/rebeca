@@ -2,8 +2,8 @@ import React from "react";
 import "./Schedule.css";
 import Heading from "../../components/Heading/Heading";
 import PujaHeading from "../../components/PujaHeading/PujaHeading";
-import contents from "../../assets/data/contents.json"
-import events from "../../assets/data/events.json"
+import contents from "../../assets/data/contents.json";
+import events from "../../assets/data/events.json";
 import { Link } from "react-router-dom";
 // import EventPopup from "../../components/EventPopup/EventPopup"
 
@@ -35,9 +35,7 @@ function EventSection({ date, datetxt, eventlist, topic, about }) {
           <div className="topic display-font">{topic}</div>
           <div className="about">{about}</div>
 
-          <div className="about-link">
-            Learn more
-          </div>
+          <div className="about-link">Learn more</div>
         </div>
       </div>
     </div>
@@ -53,28 +51,28 @@ function Schedule() {
     return res;
   }
 
-    
-    var nights = ["saptami", "ashtami", "navami", "dashami"];
-    return (
-        contents && events && (
-            <div className="schedule">
-                <Heading title={"REBECA SCHEDULE"} subTitle={introtext} />
-                {nights.map((night, i) => {
-                    return (
-                        <EventSection
-                            date={contents[night].date}
-                            datetxt={night.toUpperCase()}
-                            eventlist={eventListSummarizer(events[night].eventList)}
-                            topic={contents[night].nightType}
-                            about={contents[night].intro}
-                            key = {i}
-                        />
-                    );
-                })}
-            </div>
-        )
-        // <EventPopup />
-    );
+  var nights = ["saptami", "ashtami", "navami", "dashami"];
+  return (
+    contents &&
+    events && (
+      <div className="schedule">
+        <Heading title={"REBECA SCHEDULE"} subTitle={introtext} />
+        {nights.map((night, i) => {
+          return (
+            <EventSection
+              date={contents[night].date}
+              datetxt={night.toUpperCase()}
+              eventlist={eventListSummarizer(events[night].eventList)}
+              topic={contents[night].nightType}
+              about={contents[night].intro}
+              key={i}
+            />
+          );
+        })}
+      </div>
+    )
+    // <EventPopup />
+  );
 }
 
 export default Schedule;
