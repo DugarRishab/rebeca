@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Nightbanner.css";
 
-import CustomButton from "../Button/Button";
+import Button from "../Button/Button";
 
 const Description = {
   saptami:
@@ -35,12 +35,12 @@ const BannerLeft = ({ day }) => {
         </div>
       </div>
       <div className="typography-section">
-        <Link to={`/events/day/${day.toLowerCase()}`}>
+        <Link to={`/events/${day.toLowerCase()}`}>
           <div>{day.toUpperCase()}</div>
         </Link>
         <p>{Description[day.toLowerCase()]}</p>
-        <Link to={`/events/day/${day.toLowerCase()}`}>
-          <CustomButton variant={"filled"} innerText={"Learn More"}></CustomButton>
+        <Link to={`/events/${day.toLowerCase()}`}>
+          <Button variant={"filled"} innerText={"Learn More"}></Button>
         </Link>
       </div>
     </div>
@@ -50,12 +50,12 @@ const BannerRight = ({ day }) => {
   return (
     <div className={`banner-wrapper-2 banner-${day.toLowerCase()}`}>
       <div className="typography-section">
-        <Link to={`/events/day/${day.toLowerCase()}`}>
+        <Link to={`/events/${day.toLowerCase()}`}>
           <div>{day.toUpperCase()}</div>
         </Link>
         <p>{Description[day.toLowerCase()]}</p>
-        <Link to={`/events/day/${day.toLowerCase()}`}>
-          <CustomButton variant={"filled"} innerText={"Learn More"}></CustomButton>
+        <Link to={`/events/${day.toLowerCase()}`}>
+          <Button variant={"filled"} innerText={"Learn More"}></Button>
         </Link>
       </div>
       <div className="img-section">

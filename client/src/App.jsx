@@ -7,54 +7,53 @@ import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer.jsx";
 import Footer2 from "./components/Footer2/Footer2.jsx";
+function App() {
+	const [user, setUser] = useState(
+		JSON.parse(localStorage.getItem("user")) || null
+	);
+	const [authOpen, setAuthOpen] = useState(false);
+	const [emailVerificationOpen, setEmailVerificationOpen] = useState(false);
 
-import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { AuthProvider } from "./AuthContext.jsx";
+	const login = (userData, jwt) => {
+		setUser(userData);
+		localStorage.setItem("user", JSON.stringify(userData));
+		localStorage.setItem("jwt", JSON.stringify(jwt));
+	};
+	const logout = () => {
+		setUser(null);
+		localStorage.setItem("user", JSON.stringify(null));
+		localStorage.removeItem("jwt");
+	};
 
-const client_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
-export const nights = { saptami: 20, ashtami: 21, navami: 22, dashami: 23 };
+	const handleAuthOpen = () => {
+		setAuthOpen(true);
+	};
+	const handleAuthClose = () => {
+		setAuthOpen(false);
+	};
 
-const darkTheme = createTheme({
-    palette: {
-        mode: "dark",
-        primary: {
-            main: "#5075f6", // Light blue
-        },
-        secondary: {
-            main: "#705dea", // Pink
-        },
-        background: {
-            default: "#1a1a1a", // Dark background
-            paper: "#1d1d1d", // Slightly lighter for cards, etc.
-        },
-        text: {
-            primary: "#ffffff", // White text
-            secondary: "#bdbdbd", // Grey text
-        },
-    },
-});
-
-function App() {    
-    return (
-        <GoogleOAuthProvider clientId={client_ID}>
-            <div className="App">
-                <ThemeProvider theme={darkTheme}>
-                    <CssBaseline />
-                    <SpeedInsights />
-                    <Analytics />
-                    <AuthProvider>
-                        <Router>
-                            <Navbar></Navbar>
-                            <AllRoutes></AllRoutes>
-                            {/* <Footer></Footer> */}
-                            <Footer2></Footer2>
-                        </Router>
-                    </AuthProvider>
-                </ThemeProvider>
-            </div>
-        </GoogleOAuthProvider>
-    );
+	return (
+		<div className="App">
+			{/* <div className="preloader">
+				<div className="preloader-icon"></div>
+			</div> */}
+			<SpeedInsights />
+			<Analytics />
+			<Router>
+				<Navbar></Navbar>
+				<AllRoutes
+					onAuthClose={handleAuthClose}
+					onAuthOpen={handleAuthOpen}
+					authOpen={authOpen}
+					user={user}
+					login={login}
+					logout={logout}
+				></AllRoutes>
+				{/* <Footer></Footer> */}
+				<Footer2></Footer2>
+			</Router>
+		</div>
+	);
 }
 
 export default App;
